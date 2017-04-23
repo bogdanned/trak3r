@@ -3,16 +3,19 @@ import path from 'path';
 export default {
   entry: path.join(__dirname, '/client/index.js'),
   output: {
-    path: '/'/* middle ware will serve the app from memory*/
+    filename: 'bundle.js',
+    path: '/'
   },
   module: {
     loaders: [
-      test: /\.js$/,
-      include: path.join(__dirname, 'client'),
-      loaders: [ 'babel' ]
-    ]
+      {
+        test: /\.js$/,
+        include: path.join(__dirname, '/client'),
+        loaders: [ 'babel-loader' ]
+      }
+    ],
   },
   resolve: {
-    extentions: ['', '.js'],
+    extensions: [ '.js']
   }
 }
