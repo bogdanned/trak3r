@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import App from './components/App.js';
-import 'semantic-ui-css/semantic.min.css';
+import {BrowserRouter} from 'react-router-dom';
+import routes from './routes';
 
-render(<App />, document.getElementById('app'));
+render(<BrowserRouter>{routes}</BrowserRouter>, document.getElementById('app'));
