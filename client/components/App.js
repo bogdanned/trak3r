@@ -8,17 +8,11 @@ class App extends React.Component {
   render() {
     return (
       <Grid container>
-        <Grid.Row>
-          <Grid.Column computer={5} padded>
-            <CardExampleCard />
+        <Grid.Row textAlign="center">
+          <Grid.Column computer={16}>
+            <Navbar />
+            {this.children}
           </Grid.Column>
-          <Grid.Column computer={5}>
-            <CardExampleCard />
-          </Grid.Column>
-          <Grid.Column computer={5}>
-            <CardExampleCard />
-          </Grid.Column>
-          {this.children}
         </Grid.Row>
       </Grid>
     );

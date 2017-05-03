@@ -1,51 +1,21 @@
 import React, { Component } from 'react';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
+import {Link, activeItem} from 'react-router-dom';
 
 class Navbar extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-       visible: false
-    }
-    this.toggleVisibility = this.toggleVisibility.bind(this);
-  }
-
-  toggleVisibility(){
-    this.setState({
-       visible: !this.state.visible
-     })
-  }
-
   render() {
-    const { visible } = this.state;
     return (
-      <div>
-        <Button onClick={this.toggleVisibility}>Toggle Visibility</Button>
-        <Sidebar.Pushable as={Segment}>
-          <Sidebar as={Menu} animation='scale down' width='thin' visible={visible} icon='labeled' vertical inverted>
-            <Menu.Item name='home'>
-              <Icon name='home' />
-              Home
-            </Menu.Item>
-            <Menu.Item name='gamepad'>
-              <Link to="/about">
-                <Icon name='gamepad' />
-                  About
-              </Link>
-            </Menu.Item>
-            <Menu.Item name='camera'>
-              <Icon name='camera' />
-              Channels
-            </Menu.Item>
-          </Sidebar>
-          <Sidebar.Pusher>
-            <Segment basic>
-              {this.props.children}
-            </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </div>
+        <Menu pointing secondary>
+          <Menu.Item name='/' active={activeItem === 'home'} onClick={this.handleItemClick} />
+          <Link to='about'>
+            <Menu.Item name='about' active={activeItem === 'messages'} />
+          </Link>
+
+          <Menu.Item name='friends' active={activeItem === 'friends'} onClick={this.handleItemClick} />
+          <Menu.Menu position='right'>
+            <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
+          </Menu.Menu>
+        </Menu>
     )
   }
 }
