@@ -8,7 +8,11 @@ class Navbar extends Component {
         <Menu pointing secondary>
           <Menu.Item name='/' active={activeItem === 'home'} onClick={this.handleItemClick} />
           <Link to='about'>
-            <Menu.Item name='about' active={activeItem === 'messages'} />
+            <Menu.Item name='about' active={activeItem === 'about'} />
+          </Link>
+
+          <Link to='home'>
+            <Menu.Item name='home' active={activeItem === 'home'} />
           </Link>
 
           <Menu.Item name='friends' active={activeItem === 'friends'} onClick={this.handleItemClick} />

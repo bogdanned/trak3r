@@ -11,6 +11,9 @@ class App extends React.Component {
         <Grid.Row textAlign="center">
           <Grid.Column computer={16}>
             <Navbar />
+          </Grid.Column>
+          <Grid.Column computer={16}>
+            <h3>Children Render Here</h3>
             {this.children}
           </Grid.Column>
         </Grid.Row>
@@ -18,5 +21,6 @@ class App extends React.Component {
     );
   }
 }
+
 
 export default App;
