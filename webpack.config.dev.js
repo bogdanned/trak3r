@@ -2,7 +2,6 @@ import path from 'path';
 import webpack from 'webpack';
 
 export default {
-  devtools: 'eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
     path.join(__dirname, '/client/index.js')
@@ -14,6 +13,7 @@ export default {
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
+    /* Consistent build hashes */
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ],

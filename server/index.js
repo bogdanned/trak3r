@@ -15,6 +15,7 @@ app.use(webpackMiddleware(compiler, {
   noInfo: true
 }));
 
+/* Hot reloading Middleware */
 app.use(webpackHotMiddleware(compiler));
 
 app.get('*/', (req, res) => {
