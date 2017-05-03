@@ -5,7 +5,7 @@ import About from './components/About.js';
 import Navbar from './components/Navbar.js';
 
 export default (
-  <Route path="/" component={Navbar}>
+  <Route path="/" component={App}>
     <Route path="/about" component={About} />
   </Route>
 )
