@@ -3,9 +3,11 @@ import Navbar from './Navbar.js';
 import {Grid} from 'semantic-ui-react';
 import CardExampleCard from './Card.js';
 import About from './About.js';
-import {Match} from 'react-router';
+import Home from './Home.js';
+import {Route} from 'react-router';
+import SignupPage from './SignupPage.js';
 
-
+/* App */
 class App extends React.Component {
   render() {
     return (
@@ -15,7 +17,9 @@ class App extends React.Component {
             <Navbar />
           </Grid.Column>
           <Grid.Column computer={16}>
-            <h3>Children Render Here</h3>
+            <Route path="/home" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/login" component={SignupPage} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

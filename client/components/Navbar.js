@@ -15,10 +15,10 @@ class Navbar extends Component {
             <Menu.Item name='home' active={activeItem === 'home'} />
           </Link>
 
-          <Menu.Item name='friends' active={activeItem === 'friends'} onClick={this.handleItemClick} />
-          <Menu.Menu position='right'>
-            <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
-          </Menu.Menu>
+          <Link to='/login'>
+            <Menu.Item name='log-in' active={activeItem === 'login'} />
+          </Link>
+
         </Menu>
     )
   }

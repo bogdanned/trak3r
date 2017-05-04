@@ -1,5 +1,6 @@
 import React from 'react';
 import {Grid} from 'semantic-ui-react';
+import CardExampleCard from './Card.js';
 
 
 class Home extends React.Component{
