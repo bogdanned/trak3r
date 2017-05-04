@@ -7,28 +7,13 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config.dev.js';
 import users from './routes/users.js';
 
-
-let router = express.Router();
-
-
-router.post('/', (req, res) => {
-  console.log(req.body);
-});
-
-
-router.get('/', (req, res) => {
-  console.log(req.body);
-});
-
-
-
 export const app = express();
 
 const compiler = webpack(webpackConfig);
 
 app.use(bodyParser.json());
 
-app.use('api/users', users);
+app.use('/api/users', users);
 
 app.use(webpackMiddleware(compiler, {
   hot: true,
@@ -43,6 +28,5 @@ app.get('*/', (req, res) => {
   res.sendFile(path.join(__dirname, "./index.html"));
 })
 
-console.log(app._router.stack);
 
 app.listen(3000, () => console.log('Running app ..'))

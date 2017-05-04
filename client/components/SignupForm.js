@@ -6,8 +6,10 @@ class SignUpForm extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      username: '',
-      password: ''
+      email: '',
+      password: '',
+      passwordConfirmation: '',
+      errors: {}
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -21,8 +23,18 @@ class SignUpForm extends React.Component{
   }
 
   onSubmit(e){
+    const self = this;
     e.preventDefault();
-    this.props.userSignupRequest(this.state);
+    this.props.userSignupRequest(this.state)
+      .then(function(res){
+        self.setState({
+          ...this.state,
+          errors: res.body
+        })
+      })
+      .catch(function(error){
+        console.log(error);
+      });
   }
 
   render() {
@@ -30,10 +42,10 @@ class SignUpForm extends React.Component{
       <form onSubmit={this.onSubmit}>
         <Input
           fluid
-          name='username'
-          label='Username'
-          placeholder='Joe Pesci ...'
-          value={this.state.username}
+          name='email'
+          label='email'
+          placeholder='yo@putmebackin.com'
+          value={this.state.email}
           onChange={this.onChange}
         />
         <Input
@@ -42,6 +54,14 @@ class SignUpForm extends React.Component{
           label='Password'
           placeholder='K1tt3n'
           value={this.state.password}
+          onChange={this.onChange}
+        />
+        <Input
+          fluid
+          name='passwordConfirmation'
+          label='Password Confirmation'
+          placeholder='Confirmantion'
+          value={this.state.passwordConfirmation}
           onChange={this.onChange}
         />
         <Button type="button" onClick={this.onSubmit}>Log In</Button>
