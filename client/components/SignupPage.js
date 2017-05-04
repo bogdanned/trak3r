@@ -1,8 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {Grid, Input, Button} from 'semantic-ui-react';
 import SignUpForm from './SignUpForm.js';
-import { connect } from 'react-redux';
-import userSignupRequest from '../actions/signupActions.js';
+import {userSignupRequest} from '../actions/signupActions.js';
 
 
 class SignUpPage extends React.Component{
@@ -21,4 +21,9 @@ class SignUpPage extends React.Component{
 }
 
 
-export default connect((state) => { return {} }, {userSignupRequest})(SignUpForm);
+function mapStateToProps(state) {
+  return {};
+}
+
+
+export default connect(mapStateToProps, {userSignupRequest})(SignUpPage);

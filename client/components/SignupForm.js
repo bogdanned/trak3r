@@ -1,6 +1,5 @@
 import React from 'react';
 import {Grid, Input, Button} from 'semantic-ui-react';
-import { connect } from 'react-redux';
 
 
 class SignUpForm extends React.Component{
@@ -23,8 +22,7 @@ class SignUpForm extends React.Component{
 
   onSubmit(e){
     e.preventDefault();
-    console.log(this.state);
-    this.props.userSignupRequest();
+    this.props.userSignupRequest(this.state);
   }
 
   render() {
