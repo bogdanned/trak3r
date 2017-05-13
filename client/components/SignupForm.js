@@ -16,20 +16,25 @@ class SignUpForm extends React.Component{
   }
 
   onChange(e){
-    console.log(e.target.value);
+    if(this.state.errors[e.target.name]){
+      e.target.error = true;
+    }
     this.setState({
       [e.target.name]: e.target.value
     });
   }
 
   onSubmit(e){
-    const self = this;
     e.preventDefault();
+    const self = this;
     this.props.userSignupRequest(this.state)
       .then(function(res){
+        self.props.addFlashMessage({
+          type: 'success',
+          message: 'You have signed up succesfully. Wellcome!'
+        });
         self.setState({
-          ...this.state,
-          errors: res.body
+          errors: res.data
         })
       })
       .catch(function(error){
@@ -60,7 +65,7 @@ class SignUpForm extends React.Component{
           fluid
           name='passwordConfirmation'
           label='Password Confirmation'
-          placeholder='Confirmantion'
+          placeholder='Confirmation'
           value={this.state.passwordConfirmation}
           onChange={this.onChange}
         />

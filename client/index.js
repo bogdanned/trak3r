@@ -9,12 +9,15 @@ import Home from './components/Home.js';
 import { Provider } from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-
+import rootReducer from './rootReducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 /* TODO: Review the concept of store in redux */
 const store = createStore(
-  (state = {}) => state,
-  applyMiddleware(thunk)
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(thunk)
+  )
 );
 
 render(

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {Grid, Input, Button} from 'semantic-ui-react';
 import SignUpForm from './SignUpForm.js';
 import {userSignupRequest} from '../actions/signupActions.js';
+import {addFlashMessage} from '../actions/flashMessages.js';
 
 
 class SignUpPage extends React.Component{
@@ -12,7 +13,10 @@ class SignUpPage extends React.Component{
       <Grid>
         <Grid.Row>
           <Grid.Column computer={8} textAlign="left">
-            <SignUpForm userSignupRequest={userSignupRequest} />
+            <SignUpForm
+              userSignupRequest={userSignupRequest}
+              addFlashMessage={addFlashMessage}
+            />
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -26,4 +30,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, {userSignupRequest})(SignUpPage);
+export default connect(mapStateToProps, {userSignupRequest, addFlashMessage})(SignUpPage);

@@ -1,11 +1,13 @@
 import React from 'react';
-import Navbar from './Navbar.js';
+import {Route} from 'react-router';
 import {Grid} from 'semantic-ui-react';
 import CardExampleCard from './Card.js';
 import About from './About.js';
 import Home from './Home.js';
-import {Route} from 'react-router';
 import SignupPage from './SignupPage.js';
+import FlashMessageList from './FlashMessageList.js';
+import Navbar from './Navbar.js';
+
 
 /* App */
 class App extends React.Component {
@@ -15,6 +17,9 @@ class App extends React.Component {
         <Grid.Row textAlign="center">
           <Grid.Column computer={16}>
             <Navbar />
+          </Grid.Column>
+          <Grid.Column computer={16}>
+            <FlashMessageList />
           </Grid.Column>
           <Grid.Column computer={16}>
             <Route path="/home" component={Home} />
